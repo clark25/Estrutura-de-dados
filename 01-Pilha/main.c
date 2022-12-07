@@ -49,17 +49,40 @@ int main(){
 }
 
 void push(){
-  if(isFull==0){
+  if(isFull==1){
     printf("Overflow State: Nao e possivel adicionar nenhum elemento a pilha\n");
+  }else{
+    int x;
+    printf("Digite o elemento a ser inserido na pilha: ");
+    scanf("%d", &x);
+    top+=1;
+    stack[top] = x;
+  }
+}
+
+int pop(){
+  if(isEmpty==1){
+    printf("Underflow State: A pilha ja esta vazia, nenhum elemento pode ser removido dela");
+  }else{
+    int x = stack[top];
+    printf("Desempilhando o elemento %d da pilha\n",x);
+    top--;
+    return x;
+  }
+}
+
+bool isEmpty(){
+  if(top == -1){
+    return true;
+  }else{
+    return false;
   }
 }
 
 bool isFull(){
   if(top == N-1){
-    printf("A pilha esta cheia: Overflow State\n");
     return true;
   }else{
-    printf("A pilha nao esta cheia\n");
     return false;
   }
 }
