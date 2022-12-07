@@ -26,7 +26,6 @@ int main(){
   int choice;
 
   while(1){
-    system("clear");
     printf("\nEscolha qualquer uma das opcoes a seguir:\n");
     printf(" 0: Sair\n");
     printf(" 1: Push\n");
@@ -47,4 +46,20 @@ int main(){
   }
   
   return 0;
+}
+
+void push(){
+  if(isFull==0){
+    printf("Overflow State: Nao e possivel adicionar nenhum elemento a pilha\n");
+  }
+}
+
+bool isFull(){
+  if(top == N-1){
+    printf("A pilha esta cheia: Overflow State\n");
+    return true;
+  }else{
+    printf("A pilha nao esta cheia\n");
+    return false;
+  }
 }
