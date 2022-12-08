@@ -36,10 +36,12 @@ int main(){
     scanf("%d", &choice);
 
     switch (choice){
-      case 0:
-        exit(0);
-        break;
-      
+      case 0: exit(0); break;
+      case 1: push(); break;
+      case 2: pop(); break;
+      case 3: peek(); break;
+      case 4: isEmpty(); break;
+      case 5: isFull(); break;
       default:
         printf("Por favor escolha uma opcao valida!\n");
     }
@@ -49,7 +51,7 @@ int main(){
 }
 
 void push(){
-  if(isFull==1){
+  if(top == N-1){
     printf("Overflow State: Nao e possivel adicionar nenhum elemento a pilha\n");
   }else{
     int x;
@@ -61,8 +63,8 @@ void push(){
 }
 
 int pop(){
-  if(isEmpty==1){
-    printf("Underflow State: A pilha ja esta vazia, nenhum elemento pode ser removido dela");
+  if(top == -1){
+    printf("Underflow State: A pilha ja esta vazia, nenhum elemento pode ser removido dela\n");
   }else{
     int x = stack[top];
     printf("Desempilhando o elemento %d da pilha\n",x);
@@ -71,18 +73,28 @@ int pop(){
   }
 }
 
+int peek(){
+  int x = stack[top];
+  printf("%d e o elemento no top da pilha\n", x);
+  return x;
+}
+
 bool isEmpty(){
   if(top == -1){
+    printf("Pilha esta vazia: Underflow State\n");
     return true;
   }else{
+    printf("Pilha nao esta vazia\n");
     return false;
   }
 }
 
 bool isFull(){
   if(top == N-1){
+    printf("Pilha esta cheia: Overflow State\n");
     return true;
   }else{
+    printf("Pilha nao esta cheia\n");
     return false;
   }
 }
